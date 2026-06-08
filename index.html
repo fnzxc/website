@@ -39,20 +39,42 @@ body {
     margin-bottom: 30px;
 }
 
-.download-btn {
-    display: inline-block;
+.header-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 134px;
     padding: 14px 34px;
     font-size: 16px;
+    font-weight: 600;
     border-radius: 999px;
-    background: linear-gradient(135deg, #4f46e5, #6366f1);
-    color: #fff;
     text-decoration: none;
-    box-shadow: 0 8px 20px rgba(79,70,229,0.3);
     transition: 0.25s;
 }
 
-.download-btn:hover {
+.action-btn:hover {
     transform: translateY(-2px);
+}
+
+.usage-btn {
+    color: #4f46e5;
+    background: #fff;
+    border: 2px solid #4f46e5;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.12);
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.3);
 }
 
 /* 卡片 */
@@ -108,11 +130,14 @@ body {
 <div class="header">
     <h1>多媒体工具箱</h1>
     <p>简单 · 高效 · 一站式多媒体处理工具</p>
-    <a href="/download/" class="download-btn">立即下载</a>
+    <div class="header-actions">
+        <a href="#product-intro" class="action-btn usage-btn">工具使用说明</a>
+        <a href="/download/" class="action-btn download-btn">立即下载</a>
+    </div>
 </div>
 
 <!-- 产品介绍 -->
-<div class="card">
+<div class="card" id="product-intro">
     <h2>产品介绍</h2>
     <p>
         一款轻量级多媒体工具，支持视频处理、音频提取、格式转换与图片压缩，
@@ -126,28 +151,28 @@ body {
 
     <div class="grid">
         <div class="feature">
+            <h3>视频解析</h3>
+            <p>支持部分通用资源解析</p>
+        </div>
+    
+        <div class="feature">
             <h3>视频处理</h3>
             <p>裁剪与基础编辑</p>
         </div>
 
         <div class="feature">
             <h3>音频提取</h3>
-            <p>视频转音频</p>
+            <p>从视频中音频</p>
         </div>
 
         <div class="feature">
             <h3>格式转换</h3>
-            <p>多格式互转</p>
+            <p>视频多格式互转</p>
         </div>
 
         <div class="feature">
             <h3>图片压缩</h3>
-            <p>优化体积</p>
-        </div>
-
-        <div class="feature">
-            <h3>链接解析</h3>
-            <p>支持部分资源解析</p>
+            <p>图片体积压缩</p>
         </div>
     </div>
 </div>
@@ -155,14 +180,17 @@ body {
 <!-- 合规 -->
 <div class="card">
     <h2>合规说明</h2>
-    <p>本工具仅用于个人学习与多媒体处理，请合理使用相关功能。</p>
+    <p>
+        本工具仅用于个人多媒体处理，使用相关功能时，请确保您拥有相关内容的合法访问、使用或处理权限，并遵守相关法律法规、平台服务协议及版权规则。
+    </p>
+    <p>
+        任何违反相关规则或超越合理使用范围的使用行为均不属于本工具支持范围，由此产生的相关责任及风险由使用者自行承担。
+    </p>
 </div>
 
 <div class="footer">
     © 2026 多媒体工具箱
 </div>
-```
-
 </div>
 
 </body>
