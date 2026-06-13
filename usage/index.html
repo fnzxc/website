@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工具使用说明 - 多媒体工具箱</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
+    background: #f8fafc;
+    color: #1f2937;
+}
+
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.28);
+    transition: 0.25s;
+}
+
+.home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(79,70,229,0.34);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    padding: 100px 20px 80px;
+    background: linear-gradient(135deg, #e0e7ff, #f1f5f9);
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 44px;
+    margin-bottom: 15px;
+}
+
+.header p {
+    color: #4b5563;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 134px;
+    padding: 14px 34px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.usage-btn {
+    color: #4f46e5;
+    background: #fff;
+    border: 2px solid #4f46e5;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.12);
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.feature {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.25s;
+}
+
+.feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(79,70,229,0.12);
+}
+
+.feature h3 {
+    margin: 0 0 10px;
+}
+
+.feature p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.notice {
+    border-left: 4px solid #6366f1;
+    background: #eef2ff;
+}
+
+.tool-section {
+    scroll-margin-top: 24px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.steps {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.step {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 18px 20px;
+}
+
+.step h4 {
+    margin: 0 0 8px;
+    color: #3730a3;
+}
+
+.step p,
+.faq-item p {
+    margin: 8px 0 0;
+}
+
+.faq-list {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.faq-item {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 18px 20px;
+}
+
+.faq-item h4 {
+    margin: 0;
+}
+
+.footer {
+    text-align: center;
+    color: #9ca3af;
+    margin: 50px 0 20px;
+}
+
+@media (max-width: 640px) {
+    .home-btn {
+        position: static;
+        margin: 16px 0 0 16px;
+    }
+
+    .header {
+        padding: 70px 18px 56px;
+    }
+
+    .header h1 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+<a href="/" class="home-btn">首页</a>
+
+<div class="container">
+    <div class="header">
+        <h1>工具使用说明</h1>
+        <p>按功能查看操作指南、注意事项与常见问题</p>
+        <div class="header-actions">
+            <a href="#video-download" class="action-btn usage-btn">查看指南</a>
+            <a href="/download/" class="action-btn download-btn">立即下载</a>
+        </div>
+    </div>
+
+    <div class="card notice">
+        <h2>使用前须知</h2>
+        <p>不同文件或平台内容的格式、编码、清晰度、体积和访问规则可能不同，处理时间与处理结果也会存在差异。若操作失败，请先确认文件可正常打开或视频可正常播放，再根据提示重试。</p>
+        <p>使用相关功能时，请确保您拥有相关内容的合法访问、使用或处理权限，并遵守相关法律法规、平台服务协议及版权规则。</p>
+    </div>
+
+    <div class="card">
+        <h2>功能目录</h2>
+        <div class="grid">
+            <a class="feature" href="#video-download">
+                <h3>视频解析与下载</h3>
+                <p>复制链接、解析资源并保存视频</p>
+            </a>
+            <a class="feature" href="#video-cut">
+                <h3>视频裁剪</h3>
+                <p>按开始与结束时间截取片段</p>
+            </a>
+            <a class="feature" href="#audio-extract">
+                <h3>提取音频</h3>
+                <p>从本地视频中导出音频文件</p>
+            </a>
+            <a class="feature" href="#video-convert">
+                <h3>视频格式转换</h3>
+                <p>将视频转换为常用格式</p>
+            </a>
+            <a class="feature" href="#image-compress">
+                <h3>图片压缩</h3>
+                <p>调整尺寸、强度和输出格式</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="card tool-section" id="video-download">
+        <h2 class="section-title">📌 视频解析与下载</h2>
+        <p>本功能仅支持部分通用视频资源解析，不适用于所有平台或所有类型的视频内容。对于需要登录或会员权限的视频，请先点击右侧的【浏览器】按钮，在内置浏览器中登录对应平台并确认视频可以正常播放。</p>
+        <div class="steps">
+            <div class="step"><h4>第1步：打开【浏览器】播放视频</h4><p>如视频需要登录后才能观看，请在弹出的浏览器窗口中登录对应平台，并打开目标视频。</p></div>
+            <div class="step"><h4>第2步：复制视频链接</h4><p>复制视频页面地址栏中的链接，或复制视频页面提供的分享链接。</p></div>
+            <div class="step"><h4>第3步：粘贴链接并解析</h4><p>返回软件主界面，将链接粘贴到“视频链接”输入框中，然后点击【解析】按钮，等待解析完成。</p></div>
+            <div class="step"><h4>第4步：开始下载</h4><p>界面提示“解析成功”后，点击【开始下载】按钮，视频将自动下载并保存到您的电脑中。</p></div>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item"><h4>Q：每次解析都需要打开【浏览器】吗？</h4><p>通常不需要。同一个网站首次使用时登录并确保播放成功后，软件会自动保留该网站的访问状态。若更换平台或登录状态失效，可以再次打开【浏览器】登录后重试。</p></div>
+            <div class="faq-item"><h4>Q：解析或下载卡住怎么办？</h4><p>解析任务通常会在90秒内自动结束，下载任务会在60秒无进度后自动结束。若长时间无响应，可关闭软件后重新打开，或点击【终止下载】后重新解析下载。</p></div>
+        </div>
+    </div>
+
+    <div class="card tool-section" id="video-cut">
+        <h2 class="section-title">📌 视频裁剪</h2>
+        <p>本功能用于对本地视频进行简单裁剪处理，可根据设置的开始时间和结束时间，截取指定片段并保存为新视频。</p>
+        <div class="steps">
+            <div class="step"><h4>第1步：选择本地视频</h4><p>点击【选择文件】按钮，选择需要裁剪的视频文件。选择成功后，文件路径会显示在“本地视频”输入框中。</p></div>
+            <div class="step"><h4>第2步：设置开始时间</h4><p>通过“开始时间”滑动条，或【+】【-】按钮，选择裁剪片段的起始位置。</p></div>
+            <div class="step"><h4>第3步：设置结束时间</h4><p>通过“结束时间”滑动条，或【+】【-】按钮，选择裁剪片段的结束位置。</p></div>
+            <div class="step"><h4>第4步：确认裁剪范围</h4><p>确认开始时间和结束时间设置正确后，点击【开始裁剪】按钮。裁剪会生成一个新文件，不会修改或删除原视频。</p></div>
+        </div>
+    </div>
+
+    <div class="card tool-section" id="audio-extract">
+        <h2 class="section-title">📌 提取音频</h2>
+        <p>本功能用于从本地视频文件中提取音频，并保存为指定的音频格式文件。</p>
+        <div class="steps">
+            <div class="step"><h4>第1步：选择本地视频</h4><p>点击【选择文件】按钮，选择需要提取音频的视频文件。</p></div>
+            <div class="step"><h4>第2步：选择音频格式</h4><p>在“音频格式”选项中选择需要保存的格式，例如 mp3、wav、aac 等，具体可选格式以软件界面实际显示为准。</p></div>
+            <div class="step"><h4>第3步：开始提取</h4><p>确认视频文件和音频格式无误后，点击【开始提取】按钮，软件会自动生成音频文件并保存到电脑中。</p></div>
+        </div>
+    </div>
+
+    <div class="card tool-section" id="video-convert">
+        <h2 class="section-title">📌 视频格式转换</h2>
+        <p>本功能用于将本地视频文件转换为指定的视频格式，方便在不同设备、软件或平台中播放和使用。</p>
+        <div class="steps">
+            <div class="step"><h4>第1步：选择本地视频</h4><p>点击【选择文件】按钮，选择需要转换格式的视频文件。</p></div>
+            <div class="step"><h4>第2步：选择转换格式</h4><p>在“转换格式”选项中选择目标格式，例如 mp4、mov、avi、mkv 等。若不确定选择哪种格式，通常建议选择 mp4。</p></div>
+            <div class="step"><h4>第3步：开始转换</h4><p>确认视频文件和转换格式无误后，点击【开始转换】按钮，转换后的视频会自动保存到默认输出文件夹中。</p></div>
+        </div>
+    </div>
+
+    <div class="card tool-section" id="image-compress">
+        <h2 class="section-title">📌 图片压缩</h2>
+        <p>本功能用于对本地图片进行压缩处理，可减少图片文件体积，方便保存、上传或分享。可以选择单张图片，也可以选择整个文件夹进行批量压缩。</p>
+        <div class="steps">
+            <div class="step"><h4>第1步：选择图片或文件夹</h4><p>点击【选择文件】可压缩单张图片；如需批量压缩，点击【选择文件夹】并选择包含图片的文件夹。</p></div>
+            <div class="step"><h4>第2步：设置图片尺寸</h4><p>可按需填写宽度和高度。勾选【保持原始宽高比】后，软件会按原图比例调整尺寸，避免图片被拉伸或变形。</p></div>
+            <div class="step"><h4>第3步：设置压缩强度</h4><p>通过“压缩强度”滑动条选择压缩程度。数值越小通常画质保留更多；数值越大通常文件体积更小，但清晰度可能下降。</p></div>
+            <div class="step"><h4>第4步：选择输出格式并开始</h4><p>选择压缩后图片的保存格式，例如原格式、jpg、png、webp 等，然后点击【开始压缩】按钮。</p></div>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item"><h4>Q：压缩后会影响原图片吗？</h4><p>不会。图片压缩会生成新的图片文件，原始图片不会被修改或删除。</p></div>
+            <div class="faq-item"><h4>Q：压缩后的图片保存在哪里？</h4><p>图片压缩完成后，会自动保存在软件默认的输出文件夹中。</p></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 多媒体工具箱
+    </div>
+</div>
+</body>
+</html>
