@@ -49,7 +49,7 @@ body {
     padding: 100px 20px 80px;
     background: linear-gradient(135deg, #e0e7ff, #f1f5f9);
     border-radius: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
 }
 
 .header h1 {
@@ -109,7 +109,9 @@ body {
     box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
-.card h2 {
+.card h2,
+.card h3,
+.card h4 {
     margin-top: 0;
 }
 
@@ -118,86 +120,126 @@ body {
     line-height: 1.8;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+.tabs-shell {
+    position: sticky;
+    top: 18px;
+    z-index: 900;
+    padding: 14px;
+    margin-bottom: 25px;
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(99,102,241,0.14);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(79,70,229,0.14);
+    backdrop-filter: blur(12px);
 }
 
-.feature {
-    background: #f9fafb;
-    padding: 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
+.floating-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    border: 0;
+    cursor: pointer;
+    padding: 12px 22px;
+    color: #4f46e5;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    background: #eef2ff;
+    border-radius: 999px;
     transition: 0.25s;
 }
 
-.feature:hover {
+.tab-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(79,70,229,0.12);
+    box-shadow: 0 8px 18px rgba(79,70,229,0.16);
 }
 
-.feature h3 {
-    margin: 0 0 10px;
+.tab-btn.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    box-shadow: 0 8px 20px rgba(79,70,229,0.28);
 }
 
-.feature p {
-    margin: 0;
-    color: #6b7280;
+.tool-panel {
+    display: none;
 }
 
-.notice {
-    border-left: 4px solid #6366f1;
-    background: #eef2ff;
+.tool-panel.active {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
 }
 
-.tool-section {
-    scroll-margin-top: 24px;
-}
-
-.section-title {
+.panel-title {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.panel-title span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    border-radius: 50%;
+}
+
+.notice-box {
+    padding: 18px 20px;
+    margin: 20px 0;
+    color: #4b5563;
+    line-height: 1.8;
+    background: #eef2ff;
+    border-left: 4px solid #6366f1;
+    border-radius: 12px;
 }
 
 .steps {
     display: grid;
     gap: 16px;
-    margin-top: 18px;
+    margin-top: 20px;
 }
 
 .step {
+    padding: 18px 20px;
     background: #f9fafb;
     border-radius: 12px;
-    padding: 18px 20px;
 }
 
 .step h4 {
-    margin: 0 0 8px;
+    margin-bottom: 8px;
     color: #3730a3;
 }
 
-.step p,
-.faq-item p {
+.step p {
     margin: 8px 0 0;
 }
 
 .faq-list {
     display: grid;
     gap: 16px;
-    margin-top: 18px;
+    margin-top: 20px;
 }
 
 .faq-item {
+    padding: 18px 20px;
     background: #f9fafb;
     border-radius: 12px;
-    padding: 18px 20px;
 }
 
 .faq-item h4 {
-    margin: 0;
+    margin-bottom: 8px;
+}
+
+.faq-item p {
+    margin: 8px 0 0;
 }
 
 .footer {
@@ -206,7 +248,19 @@ body {
     margin: 50px 0 20px;
 }
 
-@media (max-width: 640px) {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 760px) {
     .home-btn {
         position: static;
         margin: 16px 0 0 16px;
@@ -219,6 +273,20 @@ body {
     .header h1 {
         font-size: 34px;
     }
+
+    .tabs-shell {
+        top: 10px;
+        border-radius: 22px;
+    }
+
+    .floating-tabs {
+        justify-content: flex-start;
+    }
+
+    .tab-btn {
+        flex: 1 1 42%;
+        padding: 11px 14px;
+    }
 }
 </style>
 </head>
@@ -229,109 +297,145 @@ body {
 <div class="container">
     <div class="header">
         <h1>工具使用说明</h1>
-        <p>按功能查看操作指南、注意事项与常见问题</p>
+        <p>点击下方悬浮标签，快速切换查看不同功能的操作说明</p>
         <div class="header-actions">
-            <a href="#video-download" class="action-btn usage-btn">查看指南</a>
             <a href="/download/" class="action-btn download-btn">立即下载</a>
         </div>
     </div>
 
-    <div class="card notice">
-        <h2>使用前须知</h2>
-        <p>不同文件或平台内容的格式、编码、清晰度、体积和访问规则可能不同，处理时间与处理结果也会存在差异。若操作失败，请先确认文件可正常打开或视频可正常播放，再根据提示重试。</p>
-        <p>使用相关功能时，请确保您拥有相关内容的合法访问、使用或处理权限，并遵守相关法律法规、平台服务协议及版权规则。</p>
-    </div>
+    <nav class="tabs-shell" aria-label="工具使用说明分类">
+        <div class="floating-tabs">
+            <button class="tab-btn active" type="button" data-target="video-parse" aria-controls="video-parse" aria-selected="true">视频解析</button>
+            <button class="tab-btn" type="button" data-target="video-cut" aria-controls="video-cut" aria-selected="false">视频裁剪</button>
+            <button class="tab-btn" type="button" data-target="audio-extract" aria-controls="audio-extract" aria-selected="false">提取音频</button>
+            <button class="tab-btn" type="button" data-target="video-convert" aria-controls="video-convert" aria-selected="false">视频格式转换</button>
+            <button class="tab-btn" type="button" data-target="image-compress" aria-controls="image-compress" aria-selected="false">图片压缩</button>
+        </div>
+    </nav>
 
-    <div class="card">
-        <h2>功能目录</h2>
-        <div class="grid">
-            <a class="feature" href="#video-download">
-                <h3>视频解析与下载</h3>
-                <p>复制链接、解析资源并保存视频</p>
-            </a>
-            <a class="feature" href="#video-cut">
-                <h3>视频裁剪</h3>
-                <p>按开始与结束时间截取片段</p>
-            </a>
-            <a class="feature" href="#audio-extract">
-                <h3>提取音频</h3>
-                <p>从本地视频中导出音频文件</p>
-            </a>
-            <a class="feature" href="#video-convert">
-                <h3>视频格式转换</h3>
-                <p>将视频转换为常用格式</p>
-            </a>
-            <a class="feature" href="#image-compress">
-                <h3>图片压缩</h3>
-                <p>调整尺寸、强度和输出格式</p>
-            </a>
-        </div>
-    </div>
+    <main class="card">
+        <section class="tool-panel active" id="video-parse">
+            <h2 class="panel-title"><span>1</span>视频解析——功能须知</h2>
+            <p>本功能仅支持部分通用视频资源解析，不适用于所有平台或所有类型的视频内容。由于各平台规则、页面结构及访问方式可能随时变化，解析功能可能会出现阶段性失效、无法解析或无法下载的情况。</p>
+            <div class="notice-box">如遇解析失败，请先确认视频链接有效且视频可以正常播放；对于需要登录或会员权限的视频，请先点击右侧的【浏览器】按钮，在弹出的内置浏览器中登录对应平台后再尝试解析。</div>
+            <h3>操作指南</h3>
+            <div class="steps">
+                <div class="step"><h4>第1步：打开【浏览器】播放视频</h4><p>如视频无需登录，可以跳过此步骤；如视频需要登录后才能观看，请点击界面右侧的【浏览器】按钮，在弹出的浏览器窗口中登录对应平台，并确认目标视频能够正常播放。</p></div>
+                <div class="step"><h4>第2步：复制视频链接</h4><p>复制视频页面地址栏中的链接，或复制视频页面提供的分享链接。</p></div>
+                <div class="step"><h4>第3步：粘贴链接并解析</h4><p>返回软件主界面，将复制的链接粘贴到“视频链接”输入框中，然后点击【解析】按钮，等待解析完成。</p></div>
+                <div class="step"><h4>第4步：开始下载</h4><p>当界面提示“解析成功”后，点击【开始下载】按钮，视频将自动下载并保存到您的电脑中。</p></div>
+            </div>
+            <h3>常见问题（FAQ）</h3>
+            <div class="faq-list">
+                <div class="faq-item"><h4>Q：界面上的【浏览器】按钮是什么？有什么作用？</h4><p>【浏览器】是软件内置的网页窗口，主要用于打开视频页面并登录对应平台。登录成功后，软件会自动保留该平台的访问状态，用于后续解析操作。</p></div>
+                <div class="faq-item"><h4>Q：每次解析都需要打开【浏览器】吗？</h4><p>通常不需要。同一个网站只需在首次使用时登录并确认播放成功；若更换平台或登录状态失效，可以再次打开【浏览器】登录后重试。</p></div>
+                <div class="faq-item"><h4>Q：解析卡住、下载卡住怎么办？</h4><p>解析任务通常会在90秒内自动结束，下载任务会在60秒无进度后自动结束。若长时间无响应，可以关闭软件后重新打开，或点击【终止下载】后重新解析下载。</p></div>
+                <div class="faq-item"><h4>Q：下载好的视频保存在哪里？</h4><p>视频下载完成后，会自动保存在软件默认的下载文件夹中。</p></div>
+            </div>
+        </section>
 
-    <div class="card tool-section" id="video-download">
-        <h2 class="section-title">📌 视频解析与下载</h2>
-        <p>本功能仅支持部分通用视频资源解析，不适用于所有平台或所有类型的视频内容。对于需要登录或会员权限的视频，请先点击右侧的【浏览器】按钮，在内置浏览器中登录对应平台并确认视频可以正常播放。</p>
-        <div class="steps">
-            <div class="step"><h4>第1步：打开【浏览器】播放视频</h4><p>如视频需要登录后才能观看，请在弹出的浏览器窗口中登录对应平台，并打开目标视频。</p></div>
-            <div class="step"><h4>第2步：复制视频链接</h4><p>复制视频页面地址栏中的链接，或复制视频页面提供的分享链接。</p></div>
-            <div class="step"><h4>第3步：粘贴链接并解析</h4><p>返回软件主界面，将链接粘贴到“视频链接”输入框中，然后点击【解析】按钮，等待解析完成。</p></div>
-            <div class="step"><h4>第4步：开始下载</h4><p>界面提示“解析成功”后，点击【开始下载】按钮，视频将自动下载并保存到您的电脑中。</p></div>
-        </div>
-        <div class="faq-list">
-            <div class="faq-item"><h4>Q：每次解析都需要打开【浏览器】吗？</h4><p>通常不需要。同一个网站首次使用时登录并确保播放成功后，软件会自动保留该网站的访问状态。若更换平台或登录状态失效，可以再次打开【浏览器】登录后重试。</p></div>
-            <div class="faq-item"><h4>Q：解析或下载卡住怎么办？</h4><p>解析任务通常会在90秒内自动结束，下载任务会在60秒无进度后自动结束。若长时间无响应，可关闭软件后重新打开，或点击【终止下载】后重新解析下载。</p></div>
-        </div>
-    </div>
+        <section class="tool-panel" id="video-cut">
+            <h2 class="panel-title"><span>2</span>视频裁剪——功能须知</h2>
+            <p>本功能用于对本地视频进行简单裁剪处理，可根据您设置的开始时间和结束时间，截取视频中的指定片段并保存为新视频。</p>
+            <div class="notice-box">裁剪失败时，可以先确认视频能否正常播放；也可以先使用【视频格式转换】功能，将视频转换成 MP4 格式后再裁剪。</div>
+            <h3>操作指南</h3>
+            <div class="steps">
+                <div class="step"><h4>第1步：选择本地视频</h4><p>点击界面右上角的【选择文件】按钮，选择需要裁剪的视频文件。选择成功后，视频文件路径会显示在“本地视频”输入框中。</p></div>
+                <div class="step"><h4>第2步：设置开始时间</h4><p>通过“开始时间”滑动条，或【+】【-】按钮，选择需要裁剪片段的起始位置。界面左侧会显示开始时间对应的视频截图，方便确认位置是否合适。</p></div>
+                <div class="step"><h4>第3步：设置结束时间</h4><p>通过“结束时间”滑动条，或【+】【-】按钮，选择需要裁剪片段的结束位置。界面右侧会显示结束时间对应的视频截图，方便确认位置是否合适。</p></div>
+                <div class="step"><h4>第4步：确认裁剪范围</h4><p>确认开始时间和结束时间设置正确后，点击【开始裁剪】按钮。裁剪会生成一个新视频文件，原始视频不会被修改或删除。</p></div>
+            </div>
+            <h3>常见问题（FAQ）</h3>
+            <div class="faq-list">
+                <div class="faq-item"><h4>Q：裁剪后会影响原视频吗？</h4><p>不会。裁剪功能会生成一个新的视频文件，原始视频不会被修改或删除。</p></div>
+                <div class="faq-item"><h4>Q：为什么有些视频裁剪失败？</h4><p>部分视频可能因为文件损坏、格式特殊、编码不兼容或文件过大等原因导致无法正常裁剪。可先确认视频能否播放，或转换为 MP4 格式后再试。</p></div>
+                <div class="faq-item"><h4>Q：裁剪过程卡住怎么办？</h4><p>较大的视频文件处理时间可能更长。若长时间无响应，可以关闭软件后重新打开，再重新选择视频文件进行裁剪。</p></div>
+            </div>
+        </section>
 
-    <div class="card tool-section" id="video-cut">
-        <h2 class="section-title">📌 视频裁剪</h2>
-        <p>本功能用于对本地视频进行简单裁剪处理，可根据设置的开始时间和结束时间，截取指定片段并保存为新视频。</p>
-        <div class="steps">
-            <div class="step"><h4>第1步：选择本地视频</h4><p>点击【选择文件】按钮，选择需要裁剪的视频文件。选择成功后，文件路径会显示在“本地视频”输入框中。</p></div>
-            <div class="step"><h4>第2步：设置开始时间</h4><p>通过“开始时间”滑动条，或【+】【-】按钮，选择裁剪片段的起始位置。</p></div>
-            <div class="step"><h4>第3步：设置结束时间</h4><p>通过“结束时间”滑动条，或【+】【-】按钮，选择裁剪片段的结束位置。</p></div>
-            <div class="step"><h4>第4步：确认裁剪范围</h4><p>确认开始时间和结束时间设置正确后，点击【开始裁剪】按钮。裁剪会生成一个新文件，不会修改或删除原视频。</p></div>
-        </div>
-    </div>
+        <section class="tool-panel" id="audio-extract">
+            <h2 class="panel-title"><span>3</span>提取音频——功能须知</h2>
+            <p>本功能用于从本地视频文件中提取音频，并保存为指定的音频格式文件。</p>
+            <div class="notice-box">不同视频文件的格式、编码方式和文件大小可能不同，部分视频可能会出现提取失败、处理时间较长或音频无法正常生成的情况。</div>
+            <h3>操作指南</h3>
+            <div class="steps">
+                <div class="step"><h4>第1步：选择本地视频</h4><p>点击界面右上角的【选择文件】按钮，选择需要提取音频的视频文件。选择成功后，视频文件路径会显示在“本地视频”输入框中。</p></div>
+                <div class="step"><h4>第2步：选择音频格式</h4><p>在“音频格式”选项中，选择需要保存的音频格式，例如 mp3、wav、aac 等，具体可选格式请以软件界面实际显示为准。</p></div>
+                <div class="step"><h4>第3步：开始提取</h4><p>确认视频文件和音频格式无误后，点击【开始提取】按钮。软件会自动从视频中提取音频，并将生成的音频文件保存到您的电脑中。</p></div>
+            </div>
+            <h3>常见问题（FAQ）</h3>
+            <div class="faq-list">
+                <div class="faq-item"><h4>Q：提取音频会影响原视频吗？</h4><p>不会。提取音频会生成一个新的音频文件，原始视频不会被修改或删除。</p></div>
+                <div class="faq-item"><h4>Q：为什么有些视频提取失败？</h4><p>部分视频可能因为文件损坏、格式特殊、编码不兼容、文件过大或视频本身没有音频轨道等原因，导致无法正常提取。</p></div>
+                <div class="faq-item"><h4>Q：提取后的音频保存在哪里？</h4><p>音频提取完成后，会自动保存在软件默认的输出文件夹中。</p></div>
+            </div>
+        </section>
 
-    <div class="card tool-section" id="audio-extract">
-        <h2 class="section-title">📌 提取音频</h2>
-        <p>本功能用于从本地视频文件中提取音频，并保存为指定的音频格式文件。</p>
-        <div class="steps">
-            <div class="step"><h4>第1步：选择本地视频</h4><p>点击【选择文件】按钮，选择需要提取音频的视频文件。</p></div>
-            <div class="step"><h4>第2步：选择音频格式</h4><p>在“音频格式”选项中选择需要保存的格式，例如 mp3、wav、aac 等，具体可选格式以软件界面实际显示为准。</p></div>
-            <div class="step"><h4>第3步：开始提取</h4><p>确认视频文件和音频格式无误后，点击【开始提取】按钮，软件会自动生成音频文件并保存到电脑中。</p></div>
-        </div>
-    </div>
+        <section class="tool-panel" id="video-convert">
+            <h2 class="panel-title"><span>4</span>视频格式转换——功能须知</h2>
+            <p>本功能用于将本地视频文件转换为指定的视频格式，方便在不同设备、软件或平台中播放和使用。</p>
+            <div class="notice-box">如遇转换失败，请先确认视频文件可以正常播放。若不确定选择哪种格式，通常建议选择 MP4，以提高兼容性。</div>
+            <h3>操作指南</h3>
+            <div class="steps">
+                <div class="step"><h4>第1步：选择本地视频</h4><p>点击界面右上角的【选择文件】按钮，选择需要转换格式的视频文件。选择成功后，视频文件路径会显示在“本地视频”输入框中。</p></div>
+                <div class="step"><h4>第2步：选择转换格式</h4><p>在“转换格式”选项中，选择需要转换成的视频格式，例如 mp4、mov、avi、mkv 等，具体可选格式请以软件界面实际显示为准。</p></div>
+                <div class="step"><h4>第3步：开始转换</h4><p>确认视频文件和转换格式无误后，点击【开始转换】按钮。软件会自动进行视频格式转换，并将转换后的视频文件保存到您的电脑中。</p></div>
+            </div>
+            <h3>常见问题（FAQ）</h3>
+            <div class="faq-list">
+                <div class="faq-item"><h4>Q：视频格式转换功能是做什么用的？</h4><p>主要用于将一个视频文件转换成另一种视频格式。例如，某些视频在部分设备或软件中无法播放时，可以尝试转换为更常见的 MP4 格式。</p></div>
+                <div class="faq-item"><h4>Q：转换格式会影响原视频吗？</h4><p>不会。格式转换会生成一个新的视频文件，原始视频不会被修改或删除。</p></div>
+                <div class="faq-item"><h4>Q：转换过程卡住怎么办？</h4><p>较大的视频文件转换时间可能更长。若长时间没有响应，可以关闭软件后重新打开，再重新选择视频进行转换。</p></div>
+                <div class="faq-item"><h4>Q：转换后的视频保存在哪里？</h4><p>视频转换完成后，会自动保存在软件默认的输出文件夹中。</p></div>
+            </div>
+        </section>
 
-    <div class="card tool-section" id="video-convert">
-        <h2 class="section-title">📌 视频格式转换</h2>
-        <p>本功能用于将本地视频文件转换为指定的视频格式，方便在不同设备、软件或平台中播放和使用。</p>
-        <div class="steps">
-            <div class="step"><h4>第1步：选择本地视频</h4><p>点击【选择文件】按钮，选择需要转换格式的视频文件。</p></div>
-            <div class="step"><h4>第2步：选择转换格式</h4><p>在“转换格式”选项中选择目标格式，例如 mp4、mov、avi、mkv 等。若不确定选择哪种格式，通常建议选择 mp4。</p></div>
-            <div class="step"><h4>第3步：开始转换</h4><p>确认视频文件和转换格式无误后，点击【开始转换】按钮，转换后的视频会自动保存到默认输出文件夹中。</p></div>
-        </div>
-    </div>
-
-    <div class="card tool-section" id="image-compress">
-        <h2 class="section-title">📌 图片压缩</h2>
-        <p>本功能用于对本地图片进行压缩处理，可减少图片文件体积，方便保存、上传或分享。可以选择单张图片，也可以选择整个文件夹进行批量压缩。</p>
-        <div class="steps">
-            <div class="step"><h4>第1步：选择图片或文件夹</h4><p>点击【选择文件】可压缩单张图片；如需批量压缩，点击【选择文件夹】并选择包含图片的文件夹。</p></div>
-            <div class="step"><h4>第2步：设置图片尺寸</h4><p>可按需填写宽度和高度。勾选【保持原始宽高比】后，软件会按原图比例调整尺寸，避免图片被拉伸或变形。</p></div>
-            <div class="step"><h4>第3步：设置压缩强度</h4><p>通过“压缩强度”滑动条选择压缩程度。数值越小通常画质保留更多；数值越大通常文件体积更小，但清晰度可能下降。</p></div>
-            <div class="step"><h4>第4步：选择输出格式并开始</h4><p>选择压缩后图片的保存格式，例如原格式、jpg、png、webp 等，然后点击【开始压缩】按钮。</p></div>
-        </div>
-        <div class="faq-list">
-            <div class="faq-item"><h4>Q：压缩后会影响原图片吗？</h4><p>不会。图片压缩会生成新的图片文件，原始图片不会被修改或删除。</p></div>
-            <div class="faq-item"><h4>Q：压缩后的图片保存在哪里？</h4><p>图片压缩完成后，会自动保存在软件默认的输出文件夹中。</p></div>
-        </div>
-    </div>
+        <section class="tool-panel" id="image-compress">
+            <h2 class="panel-title"><span>5</span>图片压缩——功能须知</h2>
+            <p>本功能用于对本地图片进行压缩处理，可减少图片文件体积，方便保存、上传或分享。您可以选择单张图片，也可以选择整个文件夹进行批量压缩。</p>
+            <div class="notice-box">压缩强度越高，文件体积通常越小，但图片清晰度可能会下降。不同图片的格式、尺寸、清晰度和文件大小不同，压缩后的效果也会有所差异。</div>
+            <h3>操作指南</h3>
+            <div class="steps">
+                <div class="step"><h4>第1步：选择图片或文件夹</h4><p>点击界面右上角的【选择文件】按钮，可以选择单张图片进行压缩。如需批量压缩多张图片，可以点击【选择文件夹】按钮，选择包含图片的文件夹。</p></div>
+                <div class="step"><h4>第2步：设置图片尺寸</h4><p>可根据需要填写图片的宽度和高度。勾选【保持原始宽高比】后，软件会按照原图比例调整尺寸，避免图片被拉伸或变形。</p></div>
+                <div class="step"><h4>第3步：设置压缩强度</h4><p>通过“压缩强度”滑动条选择压缩程度。数值越小，通常压缩越轻、图片清晰度保留更多；数值越大，通常压缩越强、文件体积更小，但清晰度可能下降。</p></div>
+                <div class="step"><h4>第4步：选择输出格式</h4><p>在“输出格式”选项中，选择压缩后图片的保存格式，例如原格式、jpg、png、webp 等。</p></div>
+                <div class="step"><h4>第5步：开始压缩</h4><p>确认图片、尺寸、压缩强度和输出格式无误后，点击【开始压缩】按钮。软件会自动处理图片，并将压缩后的图片保存到您的电脑中。</p></div>
+            </div>
+            <h3>常见问题（FAQ）</h3>
+            <div class="faq-list">
+                <div class="faq-item"><h4>Q：选择文件和选择文件夹有什么区别？</h4><p>【选择文件】适合压缩单张图片；【选择文件夹】适合批量压缩多张图片，软件会对文件夹中的图片进行统一处理。</p></div>
+                <div class="faq-item"><h4>Q：保持原始宽高比是什么意思？</h4><p>表示在调整图片尺寸时尽量保持图片原来的比例，避免图片被强行拉宽、压扁或变形。</p></div>
+                <div class="faq-item"><h4>Q：压缩后会影响原图片吗？</h4><p>不会。图片压缩会生成新的图片文件，原始图片不会被修改或删除。</p></div>
+                <div class="faq-item"><h4>Q：压缩后的图片保存在哪里？</h4><p>图片压缩完成后，会自动保存在软件默认的输出文件夹中。</p></div>
+            </div>
+        </section>
+    </main>
 
     <div class="footer">
         © 2026 多媒体工具箱
     </div>
 </div>
+
+<script>
+const tabButtons = document.querySelectorAll('.tab-btn');
+const toolPanels = document.querySelectorAll('.tool-panel');
+
+tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const target = button.dataset.target;
+
+        tabButtons.forEach((item) => {
+            const isActive = item === button;
+            item.classList.toggle('active', isActive);
+            item.setAttribute('aria-selected', String(isActive));
+        });
+
+        toolPanels.forEach((panel) => {
+            panel.classList.toggle('active', panel.id === target);
+        });
+    });
+});
+</script>
 </body>
 </html>
